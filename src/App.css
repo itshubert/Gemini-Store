@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+button, a {
+  @apply cursor-pointer;
+}
+
 .app-container {
   display: flex;
   height: 100%;
