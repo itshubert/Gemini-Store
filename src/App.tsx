@@ -1,18 +1,14 @@
 import "./App.css";
-import { Route, Routes } from "react-router";
+import { MainRouterOutlet } from "./components/MainRouterOutlet";
 import { AuthProvider } from "./modules/authentication/AuthProvider";
-import Home from "./pages/Home/Home";
-import SignIn from "./pages/SignIn/SignIn";
-import SignUp from "./pages/SignUp/SignUp";
+import { CartProvider } from "./modules/cart/CartProvider";
 
 function App() {
   return (
     <AuthProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-      </Routes>
+      <CartProvider>
+        <MainRouterOutlet />
+      </CartProvider>
     </AuthProvider>
   );
 }

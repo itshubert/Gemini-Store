@@ -9,10 +9,17 @@ export const useCategories = () => {
     data: categories,
     error,
     isValidating: isLoading,
-  } = useSWR<Category[]>(allCategoriesUrl, (url: string) => {
-    var result = api.Get<Category[]>(url);
-    return result;
-  });
+    mutate,
+  } = useSWR<Category[]>(
+    allCategoriesUrl,
+    (url: string) => {
+      var result = api.Get<Category[]>(url);
+      return result;
+    },
+    {
+      revalidateOnFocus: true,
+    },
+  );
 
-  return { categories, isLoading, error };
+  return { categories, isLoading, error, mutate };
 };
