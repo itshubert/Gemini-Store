@@ -16,7 +16,7 @@ export const AddToCart = ({ product }: AddToCartProps) => {
     formState: { errors },
   } = useForm<CartItem>({
     defaultValues: {
-      productId: product.id,
+      product,
       quantity: 1,
       unitPrice: product.price,
     },
@@ -40,6 +40,7 @@ export const AddToCart = ({ product }: AddToCartProps) => {
             {...register("quantity", {
               required: "Quantity is required",
               min: { value: 1, message: "Minimum quantity is 1" },
+              valueAsNumber: true,
             })}
             className="mt-1 block w-20 border border-gray-300 rounded-md p-2"
           />

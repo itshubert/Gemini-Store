@@ -1,11 +1,12 @@
 import { createContext, type FC, useContext, useEffect, useState } from "react";
 import type { CartItem } from "../products/types/buy-request";
+import type { Product } from "../products/types/product";
 
 interface CartProviderProps {
   items: CartItem[];
   addItem: (item: CartItem) => void;
-  removeItem: (productId: string) => void;
-  adjustItemQuantity: (productId: string, quantity: number) => void;
+  removeItem: (product: Product) => void;
+  adjustItemQuantity: (product: Product, quantity: number) => void;
   clearCart: () => void;
 }
 
@@ -34,11 +35,11 @@ export const CartProvider: FC<{ children: React.ReactNode }> = ({
   const addItem = (item: CartItem) => {
     setItems((prevItems) => {
       const existingItem = prevItems.find(
-        (i) => i.productId === item.productId,
+        (i) => i.product.id === item.product.id,
       );
       if (existingItem) {
         return prevItems.map((i) =>
-          i.productId === item.productId
+          i.product.id === item.product.id
             ? { ...i, quantity: i.quantity + item.quantity }
             : i,
         );
@@ -47,16 +48,16 @@ export const CartProvider: FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  const removeItem = (productId: string) => {
+  const removeItem = (product: Product) => {
     setItems((prevItems) =>
-      prevItems.filter((item) => item.productId !== productId),
+      prevItems.filter((item) => item.product.id !== product.id),
     );
   };
 
-  const adjustItemQuantity = (productId: string, quantity: number) => {
+  const adjustItemQuantity = (product: Product, quantity: number) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
-        item.productId === productId ? { ...item, quantity } : item,
+        item.product.id === product.id ? { ...item, quantity } : item,
       ),
     );
   };

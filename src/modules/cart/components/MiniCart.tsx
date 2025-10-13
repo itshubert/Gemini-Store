@@ -31,9 +31,9 @@ const MiniCart = () => {
     };
   }, [isOpen]);
 
-  const handleCheckout = () => {
+  const handleShoppingCart = () => {
     setIsOpen(false);
-    navigate("/checkout");
+    navigate("/shopping-cart");
   };
 
   return (
@@ -94,11 +94,11 @@ const MiniCart = () => {
         <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 border border-gray-200">
           <div className="py-1">
             <button
-              onClick={handleCheckout}
+              onClick={handleShoppingCart}
               className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
               type="button"
             >
-              Check out
+              View Cart
             </button>
           </div>
         </div>

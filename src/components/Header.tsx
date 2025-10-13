@@ -38,14 +38,18 @@ export const Header = () => {
     <>
       <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
         <div className="flex justify-between items-center px-8 py-4 max-w-full">
-          <div className="flex items-center gap-2 text-2xl font-bold text-blue-500 cursor-pointer select-none">
+          <button
+            type="button"
+            className="flex items-center gap-2 text-2xl font-bold text-blue-500 cursor-pointer select-none"
+            onClick={() => navigate("/")}
+          >
             <span className="text-3xl bg-gradient-to-br from-blue-500 to-blue-700 bg-clip-text text-transparent">
               ✦
             </span>
             <span className="bg-gradient-to-br from-blue-500 to-blue-700 bg-clip-text text-transparent">
               Gemini
             </span>
-          </div>
+          </button>
 
           <div className="flex gap-4 items-center">
             {isAuthenticated && user && customer && (

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { api } from "../../../common/utils/api";
-import { AddToCart } from "../../cart/components/AddToCart";
-import type { Product } from "../types/product";
-import BuyForm from "./BuyForm";
+import { api } from "../../common/utils/api";
+import { AddToCart } from "../../modules/cart/components/AddToCart";
+import type { Product } from "../../modules/products/types/product";
 
 export const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();

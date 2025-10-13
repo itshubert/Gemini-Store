@@ -1,3 +1,5 @@
+import type { Product } from "./product";
+
 export type BuyRequest = {
   customerId?: string;
   firstName: string;
@@ -18,7 +20,7 @@ export type Address = {
 };
 
 export type CartItem = {
-  productId: string;
+  product: Product;
   quantity: number;
   unitPrice: number;
 };
