@@ -6,11 +6,17 @@ export type BuyRequest = {
   lastName: string;
   email: string;
   currency: string;
-  shippingAddress: Address;
-  items: CartItem[];
+  shippingAddress: ShippingAddress;
+  items: OrderRequestItem[];
 };
 
-export type Address = {
+export type CartItem = {
+  product: Product;
+  quantity: number;
+  unitPrice: number;
+};
+
+export type ShippingAddress = {
   addressLine1: string;
   addressLine2?: string;
   city: string;
@@ -19,8 +25,8 @@ export type Address = {
   country: string;
 };
 
-export type CartItem = {
-  product: Product;
+export type OrderRequestItem = {
+  productId: string;
   quantity: number;
   unitPrice: number;
 };

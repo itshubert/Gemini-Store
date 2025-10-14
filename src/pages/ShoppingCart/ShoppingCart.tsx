@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { useCartContext } from "../../modules/cart/CartProvider";
 import type { Product } from "../../modules/products/types/product";
 
 export const ShoppingCart = () => {
   const { items, adjustItemQuantity, removeItem } = useCartContext();
   const [itemToRemove, setItemToRemove] = useState<Product | null>(null);
+  const navigate = useNavigate();
 
   const handleQuantityChange = (product: Product, newQuantity: number) => {
     if (newQuantity === 0) {
@@ -176,15 +178,16 @@ export const ShoppingCart = () => {
               <button
                 type="button"
                 className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+                onClick={() => navigate("/payment")}
               >
-                Proceed to Checkout
+                Proceed to Payment
               </button>
-              <a
-                href="/"
+              <Link
                 className="block text-center mt-4 text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                to="/"
               >
                 Continue Shopping
-              </a>
+              </Link>
             </div>
           </div>
         </div>
