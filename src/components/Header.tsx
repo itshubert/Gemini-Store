@@ -90,6 +90,15 @@ export const Header = () => {
                     >
                       Sign Out
                     </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        navigate("/order-history");
+                      }}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    >
+                      View Orders
+                    </button>
                   </div>
                 )}
               </div>
